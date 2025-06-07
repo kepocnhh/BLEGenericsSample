@@ -14,6 +14,10 @@ internal fun MainScreen() {
             .fillMaxSize()
             .background(Color.White),
     ) {
-        ScannerScreen()
+        ScannerScreen(
+            onSelectDevice = { device ->
+                // todo
+            },
+        )
     }
 }
