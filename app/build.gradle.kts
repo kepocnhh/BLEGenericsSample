@@ -3,12 +3,14 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 repositories {
     google()
     mavenCentral()
+    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
 }
 
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("org.jetbrains.compose") version Version.compose
 }
 
 android {
@@ -32,7 +34,12 @@ android {
         }
     }
 
-    buildFeatures.buildConfig = true
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
+
+    composeOptions.kotlinCompilerExtensionVersion = "1.5.15"
 }
 
 androidComponents.onVariants { variant ->
@@ -55,5 +62,6 @@ androidComponents.onVariants { variant ->
 }
 
 dependencies {
-    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.activity:activity-compose:1.10.1")
+    implementation(compose.foundation)
 }
