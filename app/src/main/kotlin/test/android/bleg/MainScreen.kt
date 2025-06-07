@@ -14,6 +14,6 @@ internal fun MainScreen() {
             .fillMaxSize()
             .background(Color.White),
     ) {
-        // todo
+        ScannerScreen()
     }
 }
